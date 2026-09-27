@@ -1,0 +1,2177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kashi View Restaurant & Cafe | Share Your Experience</title>
+
+<meta name="theme-color" content="#0b0b0b">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(
+            circle at 50% -15%,
+            #51351b 0%,
+            #21160d 28%,
+            #0d0b09 62%,
+            #050505 100%
+        );
+    color:#fff;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+}
+
+/* =========================
+   APP
+========================= */
+
+.app{
+    width:100%;
+    max-width:560px;
+    margin:auto;
+    padding:15px 14px 50px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    text-align:center;
+    padding:25px 10px 20px;
+}
+
+.logo{
+    width:82px;
+    height:82px;
+    margin:auto;
+
+    border-radius:50%;
+
+    border:2px solid #d8ae61;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(216,174,97,.16),
+            rgba(0,0,0,.15)
+        );
+
+    color:#e3bd78;
+
+    font-size:24px;
+    font-weight:900;
+
+    box-shadow:
+        0 0 35px rgba(216,174,97,.16),
+        inset 0 0 20px rgba(216,174,97,.05);
+}
+
+.badge{
+    display:inline-block;
+
+    margin-top:18px;
+
+    padding:7px 13px;
+
+    border:1px solid rgba(216,174,97,.32);
+
+    border-radius:30px;
+
+    color:#d8ae61;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+}
+
+h1{
+    margin-top:14px;
+
+    font-size:28px;
+
+    line-height:1.15;
+}
+
+.subtitle{
+    margin-top:8px;
+
+    color:#999;
+
+    font-size:14px;
+}
+
+.stars{
+    margin-top:17px;
+
+    font-size:32px;
+
+    letter-spacing:4px;
+
+    color:#f5c65a;
+
+    text-shadow:
+        0 0 18px rgba(245,198,90,.2);
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-area{
+    margin:12px 0 20px;
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+
+    font-size:11px;
+
+    color:#777;
+
+    margin-bottom:7px;
+}
+
+.progress{
+    height:5px;
+
+    background:#211d18;
+
+    border-radius:10px;
+
+    overflow:hidden;
+}
+
+.progress-bar{
+    width:0%;
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #b98942,
+            #f1cd82
+        );
+
+    transition:.3s;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search{
+    width:100%;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:rgba(255,255,255,.045);
+
+    color:#fff;
+
+    border-radius:14px;
+
+    padding:14px 16px;
+
+    outline:none;
+
+    font-size:14px;
+
+    margin-bottom:13px;
+}
+
+.search::placeholder{
+    color:#666;
+}
+
+.search:focus{
+    border-color:
+        rgba(216,174,97,.5);
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.section-title{
+    font-size:19px;
+
+    font-weight:700;
+
+    margin-bottom:6px;
+}
+
+.section-subtitle{
+    color:#777;
+
+    font-size:12px;
+
+    line-height:1.5;
+
+    margin-bottom:15px;
+}
+
+/* =========================
+   SUGGESTIONS
+========================= */
+
+.suggestions{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:9px;
+
+    max-height:470px;
+
+    overflow-y:auto;
+
+    padding-right:3px;
+}
+
+.suggestions::-webkit-scrollbar{
+    width:5px;
+}
+
+.suggestions::-webkit-scrollbar-track{
+    background:#0d0c0a;
+}
+
+.suggestions::-webkit-scrollbar-thumb{
+    background:#4b3b26;
+
+    border-radius:10px;
+}
+
+.option{
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:14px;
+
+    border-radius:15px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.option:hover{
+    border-color:
+        rgba(216,174,97,.4);
+
+    transform:translateY(-1px);
+}
+
+.option.selected{
+    background:
+        rgba(216,174,97,.10);
+
+    border-color:#d8ae61;
+
+    box-shadow:
+        0 0 18px rgba(216,174,97,.06);
+}
+
+.option-icon{
+    width:40px;
+    height:40px;
+
+    flex-shrink:0;
+
+    border-radius:12px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#1d1812;
+
+    font-size:20px;
+}
+
+.option-text{
+    flex:1;
+}
+
+.option-title{
+    font-size:14px;
+
+    font-weight:600;
+}
+
+.option-desc{
+    margin-top:3px;
+
+    color:#777;
+
+    font-size:11px;
+}
+
+.checkbox{
+    width:23px;
+    height:23px;
+
+    flex-shrink:0;
+
+    border:1px solid #555;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    color:transparent;
+
+    font-size:12px;
+
+    transition:.2s;
+}
+
+.option.selected .checkbox{
+    background:#d8ae61;
+
+    border-color:#d8ae61;
+
+    color:#111;
+}
+
+/* =========================
+   DRAFT
+========================= */
+
+.draft-section{
+    margin-top:20px;
+}
+
+.draft{
+    width:100%;
+
+    min-height:155px;
+
+    resize:vertical;
+
+    padding:15px;
+
+    border-radius:16px;
+
+    border:
+        1px solid rgba(216,174,97,.25);
+
+    background:#14110d;
+
+    color:#ddd;
+
+    outline:none;
+
+    font-size:14px;
+
+    line-height:1.6;
+}
+
+.draft:focus{
+    border-color:#d8ae61;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.actions{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+
+    margin-top:12px;
+}
+
+.btn{
+    border:0;
+
+    border-radius:14px;
+
+    padding:15px 10px;
+
+    cursor:pointer;
+
+    font-weight:800;
+
+    font-size:13px;
+
+    transition:.2s;
+}
+
+.btn:hover{
+    transform:translateY(-1px);
+}
+
+.btn-copy{
+    background:#d8ae61;
+
+    color:#111;
+}
+
+.btn-google{
+    background:#fff;
+
+    color:#111;
+}
+
+.btn:disabled{
+    opacity:.35;
+
+    cursor:not-allowed;
+
+    transform:none;
+}
+
+/* =========================
+   GOOGLE GUIDE
+========================= */
+
+.guide{
+    margin-top:18px;
+
+    padding:17px;
+
+    border-radius:16px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid rgba(255,255,255,.07);
+}
+
+.guide-title{
+    color:#d8ae61;
+
+    text-transform:uppercase;
+
+    letter-spacing:1.5px;
+
+    font-size:10px;
+
+    margin-bottom:12px;
+}
+
+.guide-row{
+    display:flex;
+
+    gap:10px;
+
+    align-items:flex-start;
+
+    margin:10px 0;
+
+    color:#999;
+
+    font-size:12px;
+
+    line-height:1.4;
+}
+
+.num{
+    width:22px;
+    height:22px;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    background:#282116;
+
+    color:#d8ae61;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-weight:800;
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.status{
+    display:none;
+
+    margin-top:12px;
+
+    padding:12px;
+
+    text-align:center;
+
+    border-radius:12px;
+
+    background:rgba(91,196,111,.08);
+
+    border:1px solid rgba(91,196,111,.15);
+
+    color:#8ee29d;
+
+    font-size:12px;
+}
+
+/* =========================
+   QR
+========================= */
+
+.qr-box{
+    margin-top:20px;
+
+    padding:20px;
+
+    text-align:center;
+
+    border-radius:18px;
+
+    background:#fff;
+
+    color:#111;
+
+    display:none;
+}
+
+.qr-box h3{
+    font-size:16px;
+
+    margin-bottom:15px;
+}
+
+#qrcode{
+    width:max-content;
+
+    margin:auto;
+
+    padding:10px;
+
+    background:white;
+}
+
+.qr-box button{
+    margin-top:15px;
+
+    border:0;
+
+    padding:12px 18px;
+
+    border-radius:10px;
+
+    background:#111;
+
+    color:#fff;
+
+    cursor:pointer;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    text-align:center;
+
+    margin-top:28px;
+
+    color:#4d4d4d;
+
+    font-size:9px;
+
+    letter-spacing:.7px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:430px){
+
+    .app{
+        padding-left:11px;
+        padding-right:11px;
+    }
+
+    h1{
+        font-size:25px;
+    }
+
+    .actions{
+        grid-template-columns:1fr;
+    }
+
+}
+</style>
+
+</head>
+
+<body>
+
+
+<div class="app">
+
+
+<!-- =========================================
+     HERO
+========================================= -->
+
+<section class="hero">
+
+    <div class="logo">
+        KV
+    </div>
+
+    <div class="badge">
+        Guest Experience
+    </div>
+
+    <h1>
+        Kashi View<br>
+        Restaurant & Cafe
+    </h1>
+
+    <div class="subtitle">
+        Tell us about your experience ❤️
+    </div>
+
+    <div class="stars">
+        ★★★★★
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     PROGRESS
+========================================= -->
+
+<div class="progress-area">
+
+    <div class="progress-info">
+
+        <span>
+            Your experience
+        </span>
+
+        <span id="countText">
+            0 selected
+        </span>
+
+    </div>
+
+    <div class="progress">
+
+        <div
+            id="progressBar"
+            class="progress-bar"
+        ></div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     SEARCH
+========================================= -->
+
+<input
+    id="search"
+    class="search"
+    type="search"
+    placeholder="🔍 Search experience..."
+>
+
+
+
+<!-- =========================================
+     TITLE
+========================================= -->
+
+<div class="section-title">
+    What did you enjoy?
+</div>
+
+<div class="section-subtitle">
+    Select the points that genuinely describe
+    your experience. You can edit the review
+    before posting it.
+</div>
+
+
+
+<!-- =========================================
+     20 OPTIONS
+========================================= -->
+
+<div
+    id="suggestions"
+    class="suggestions"
+>
+
+
+<!-- 01 -->
+
+<div
+    class="option"
+    data-title="Food Quality"
+    data-text="The food quality was really good and the dishes were enjoyable."
+    onclick="toggleOption(this)"
+>
+
+    <div class="option-icon">
+        🍽️
+    </div>
+
+    <div class="option-text">
+
+        <div class="option-title">
+            Food Quality
+        </div>
+
+        <div class="option-desc">
+            Quality of food and preparation
+        </div>
+
+    </div>
+
+    <div class="checkbox">
+        ✓
+    </div>
+
+</div>
+
+
+
+<!-- 02 -->
+
+<div
+    class="option"
+    data-title="Taste"
+    data-text="The food tasted great and the flavours were enjoyable."
+    onclick="toggleOption(this)"
+>
+
+    <div class="option-icon">
+        😋
+    </div>
+
+    <div class="option-text">
+
+        <div class="option-title">
+            Taste
+        </div>
+
+        <div class="option-desc">
+            Flavour and taste
+        </div>
+
+    </div>
+
+    <div class="checkbox">
+        ✓
+    </div>
+
+</div>
+
+
+
+<!-- 03 -->
+
+<div
+    class="option"
+    data-title="Fresh Food"
+    data-text="The food tasted fresh and was nicely prepared."
+    onclick="toggleOption(this)"
+>
+
+    <div class="option-icon">
+        🥗
+    </div>
+
+    <div class="option-text">
+
+        <div class="option-title">
+            Fresh Food
+        </div>
+
+        <div class="option-desc">
+            Freshness of ingredients
+        </div>
+
+    </div>
+
+    <div class="checkbox">
+        ✓
+    </div>
+
+</div>
+
+
+
+<!-- 04 -->
+
+<div
+    class="option"
+    data-title="Presentation"
+    data-text="The presentation of the food was appealing and well done."
+    onclick="toggleOption(this)"
+>
+
+    <div class="option-icon">
+        🍛
+    </div>
+
+    <div class="option-text">
+
+        <div class="option-title">
+            Food Presentation
+        </div>
+
+        <div class="option-desc">
+            Plating and presentation
+        </div>
+
+    </div>
+
+    <div class="checkbox">
+        ✓
+    </div>
+
+</div>
+
+
+
+<!-- 05 -->
+
+<div
+    class="option"
+    data-title="Portion"
+    data-text="The portion sizes were satisfying for the meal."
+    onclick="toggleOption(this)"
+>
+
+    <div class="option-icon">
+        🍱
+    </div>
+
+    <div class="option-text">
+
+        <div class="option-title">
+            Portion Size
+        </div>
+
+        <div class="option-desc">
+            Quantity and serving size
+        </div>
+
+    </div>
+
+    <div class="checkbox">
+        ✓
+    </div>
+
+</div>
+
+
+
+<!-- 06 -->
+
+<div
+    class="option"
+    data-title="Service"
+    data-text="The service was smooth and we were looked after well."
+    onclick="toggleOption(this)"
+>
+
+    <div class="option-icon">
+        🤝
+    </div>
+
+    <div class="option-text">
+
+        <div class="option-title">
+            Service
+        </div>
+
+        <div class="option-desc">
+            Overall service experience
+        </div>
+
+    </div>
+
+    <div class="checkbox">
+        ✓
+    </div>
+
+</div>
+
+
+
+<!-- 07 -->
+
+<div
+    class="option"
+    data-title="Staff"
+    data-text="The staff was polite, friendly and helpful."
+    onclick="toggleOption(this)"
+>
+
+    <div class="option-icon">
+        😊
+    </div>
+
+    <div class="option-text">
+
+        <div class="option-title">
+            Friendly Staff
+        </div>
+
+        <div class="option-desc">
+            Staff behaviour
+        </div>
+
+    </div>
+
+    <div class="checkbox">
+        ✓
+    </div>
+
+</div>
+
+
+
+<!-- 08 -->
+
+<div
+    class="option"
+    data-title="Waiting Time"
+    data-text="The waiting time was reasonable and the service was handled efficiently."
+    onclick="toggleOption(this)"
+>
+
+    <div class="option-icon">
+        ⏱️
+    </div>
+
+    <div class="option-text">
+
+        <div class="option-title">
+            Waiting Time
+        </div>
+
+        <div class="option-desc">
+            Speed of service
+        </div>
+
+    </div>
+
+    <div class="checkbox">
+        ✓
+    </div>
+
+</div>
+
+
+
+<!-- 09 -->
+
+<div
+    class="option"
+    data-title="Cleanliness"
+    data-text="The restaurant was clean and well maintained."
+    onclick="toggleOption(this)"
+>
+
+    <div class="option-icon">
+        ✨
+    </div>
+
+    <div class="option-text">
+
+        <div class="option-title">
+            Cleanliness
+        </div>
+
+        <div class="option-desc">
+            Clean and maintained space
+        </div>
+
+    </div>
+
+    <div class="checkbox">
+        ✓
+    </div>
+
+</div>
+
+
+
+<!-- 10 -->
+
+<div
+    class="option"
+    data-title="Ambience"
+    data-text="The ambience was pleasant and made the dining experience enjoyable."
+    onclick="toggleOption(this)"
+>
+
+    <div class="option-icon">
+        🕯️
+    </div>
+
+    <div class="option-text">
+
+        <div class="option-title">
+            Ambience
+        </div>
+
+        <div class="option-desc">
+            Atmosphere and vibe
+        </div>
+
+    </div>
+
+    <div class="checkbox">
+        ✓
+    </div>
+
+</div>
+
+
+
+<!-- 11 -->
+
+<div
+    class="option"
+    data-title="Seating"
+    data-text="The seating arrangement was comfortable."
+    onclick="toggleOption(this)"
+>
+
+    <div class="option-icon">
+        🪑
+    </div>
+
+    <div class="option-text">
+
+        <div class="option-title">
+            Comfortable Seating
+        </div>
+
+        <div class="option-desc">
+            Seating experience
+        </div>
+
+    </div>
+
+    <div class="checkbox">
+        ✓
+    </div>
+
+</div>
+
+
+
+<!-- 12 -->
+
+<div
+    class="option"
+    data-title="Cafe Atmosphere"
+    data-text="The cafe had a relaxed and enjoyable atmosphere."
+    onclick="toggleOption(this)"
+>
+
+    <div class="option-icon">
+        ☕
+    </div>
+
+    <div class="option-text">
+
+        <div class="option-title">
+            Cafe Atmosphere
+        </div>
+
+        <div class="option-desc">
+            Cafe vibe
+        </div>
+
+    </div>
+
+    <div class="checkbox">
+        ✓
+    </div>
+
+</div>
+
+
+
+<!-- 13 -->
+
+<div
+    class="option"
+    data-title="Location"
+    data-text="The location was convenient and easy to reach."
+    onclick="toggleOption(this)"
+>
+
+    <div class="option-icon">
+        📍
+    </div>
+
+    <div class="option-text">
+
+        <div class="option-title">
+            Location
+        </div>
+
+        <div class="option-desc">
+            Convenience and accessibility
+        </div>
+
+    </div>
+
+    <div class="checkbox">
+        ✓
+    </div>
+
+</div>
+
+
+
+<!-- 14 -->
+
+<div
+    class="option"
+    data-title="Value"
+    data-text="The overall experience felt good value for the price."
+    onclick="toggleOption(this)"
+>
+
+    <div class="option-icon">
+        💰
+    </div>
+
+    <div class="option-text">
+
+        <div class="option-title">
+            Value for Money
+        </div>
+
+        <div class="option-desc">
+            Price and experience
+        </div>
+
+    </div>
+
+    <div class="checkbox">
+        ✓
+    </div>
+
+</div>
+
+
+
+<!-- 15 -->
+
+<div
+    class="option"
+    data-title="Family Friendly"
+    data-text="It was a comfortable place to enjoy a meal with family."
+    onclick="toggleOption(this)"
+>
+
+    <div class="option-icon">
+        👨‍👩‍👧‍👦
+    </div>
+
+    <div class="option-text">
+
+        <div class="option-title">
+            Family Friendly
+        </div>
+
+        <div class="option-desc">
+            Suitable for families
+        </div>
+
+    </div>
+
+    <div class="checkbox">
+        ✓
+    </div>
+
+</div>
+
+
+
+<!-- 16 -->
+
+<div
+    class="option"
+    data-title="Dinner"
+    data-text="We enjoyed our dinner and had a pleasant dining experience."
+    onclick="toggleOption(this)"
+>
+
+    <div class="option-icon">
+        🌙
+    </div>
+
+    <div class="option-text">
+
+        <div class="option-title">
+            Dinner Experience
+        </div>
+
+        <div class="option-desc">
+            Dinner experience
+        </div>
+
+    </div>
+
+    <div class="checkbox">
+        ✓
+    </div>
+
+</div>
+
+
+
+<!-- 17 -->
+
+<div
+    class="option"
+    data-title="Drinks"
+    data-text="The drinks and beverages were enjoyable."
+    onclick="toggleOption(this)"
+>
+
+    <div class="option-icon">
+        🥤
+    </div>
+
+    <div class="option-text">
+
+        <div class="option-title">
+            Drinks
+        </div>
+
+        <div class="option-desc">
+            Beverages
+        </div>
+
+    </div>
+
+    <div class="checkbox">
+        ✓
+    </div>
+
+</div>
+
+
+
+<!-- 18 -->
+
+<div
+    class="option"
+    data-title="Hospitality"
+    data-text="The hospitality was warm and welcoming."
+    onclick="toggleOption(this)"
+>
+
+    <div class="option-icon">
+        ❤️
+    </div>
+
+    <div class="option-text">
+
+        <div class="option-title">
+            Hospitality
+        </div>
+
+        <div class="option-desc">
+            Warm and welcoming experience
+        </div>
+
+    </div>
+
+    <div class="checkbox">
+        ✓
+    </div>
+
+</div>
+
+
+
+<!-- 19 -->
+
+<div
+    class="option"
+    data-title="Overall"
+    data-text="Overall, we had a pleasant dining experience at Kashi View Restaurant & Cafe."
+    onclick="toggleOption(this)"
+>
+
+    <div class="option-icon">
+        ⭐
+    </div>
+
+    <div class="option-text">
+
+        <div class="option-title">
+            Overall Experience
+        </div>
+
+        <div class="option-desc">
+            Overall dining experience
+        </div>
+
+    </div>
+
+    <div class="checkbox">
+        ✓
+    </div>
+
+</div>
+
+
+
+<!-- 20 -->
+
+<div
+    class="option"
+    data-title="Would Recommend"
+    data-text="It was a pleasant experience and I would consider visiting again."
+    onclick="toggleOption(this)"
+>
+
+    <div class="option-icon">
+        👍
+    </div>
+
+    <div class="option-text">
+
+        <div class="option-title">
+            Would Recommend
+        </div>
+
+        <div class="option-desc">
+            Recommendation
+        </div>
+
+    </div>
+
+    <div class="checkbox">
+        ✓
+    </div>
+
+</div>
+
+
+</div>
+
+
+
+<!-- =========================================
+     DRAFT
+========================================= -->
+
+<div class="draft-section">
+
+    <div class="section-title">
+        Your review
+    </div>
+
+    <div class="section-subtitle">
+        You can edit this draft before sharing it
+        on Google.
+    </div>
+
+
+    <textarea
+        id="draft"
+        class="draft"
+        placeholder="Select some experiences above..."
+    ></textarea>
+
+
+    <div class="actions">
+
+        <button
+            id="copyBtn"
+            class="btn btn-copy"
+            onclick="copyReview()"
+            disabled
+        >
+            📋 Copy Review
+        </button>
+
+
+        <button
+            id="googleBtn"
+            class="btn btn-google"
+            onclick="copyAndOpenGoogle()"
+            disabled
+        >
+            ⭐ Copy & Open Google
+        </button>
+
+    </div>
+
+
+    <div
+        id="status"
+        class="status"
+    ></div>
+
+</div>
+
+
+
+<!-- =========================================
+     GUIDE
+========================================= -->
+
+<div class="guide">
+
+    <div class="guide-title">
+        Google Review
+    </div>
+
+
+    <div class="guide-row">
+
+        <div class="num">
+            1
+        </div>
+
+        Select the points that genuinely match
+        your experience.
+
+    </div>
+
+
+    <div class="guide-row">
+
+        <div class="num">
+            2
+        </div>
+
+        Review or edit the generated text.
+
+    </div>
+
+
+    <div class="guide-row">
+
+        <div class="num">
+            3
+        </div>
+
+        Copy the review and continue to Google.
+
+    </div>
+
+
+    <div class="guide-row">
+
+        <div class="num">
+            4
+        </div>
+
+        Choose your rating, paste your review,
+        and submit it.
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     QR
+========================================= -->
+
+<div
+    id="qrBox"
+    class="qr-box"
+>
+
+    <h3>
+        Scan to Review Kashi View
+    </h3>
+
+
+    <div id="qrcode"></div>
+
+
+    <button onclick="downloadQR()">
+        Download QR
+    </button>
+
+</div>
+
+
+
+<div class="footer">
+
+    KASHI VIEW RESTAURANT & CAFE
+
+</div>
+
+
+</div>
+
+
+
+<!-- =========================================
+     QR LIBRARY
+========================================= -->
+
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
+</script>
+
+
+
+<script>
+
+/* =====================================================
+   GOOGLE BUSINESS PROFILE
+   ===================================================== */
+
+const PLACE_ID =
+"ChIJl_cyzVkvjjkRxfnaRqRA35A";
+
+
+/*
+   Direct Google review URL
+*/
+
+const GOOGLE_REVIEW_URL =
+"https://search.google.com/local/writereview?placeid="
++ encodeURIComponent(PLACE_ID);
+
+
+
+/* =====================================================
+   SELECTED OPTIONS
+   ===================================================== */
+
+let selectedOptions = [];
+
+
+
+/* =====================================================
+   TOGGLE OPTION
+   ===================================================== */
+
+function toggleOption(element){
+
+    const title =
+        element.dataset.title;
+
+    const text =
+        element.dataset.text;
+
+
+    /*
+       Already selected?
+    */
+
+    const index =
+        selectedOptions.findIndex(
+            item => item.title === title
+        );
+
+
+    if(index >= 0){
+
+        /*
+           Remove
+        */
+
+        selectedOptions.splice(index,1);
+
+        element.classList.remove(
+            "selected"
+        );
+
+    }else{
+
+        /*
+           Add
+        */
+
+        selectedOptions.push({
+            title:title,
+            text:text
+        });
+
+        element.classList.add(
+            "selected"
+        );
+
+    }
+
+
+    updateReview();
+
+}
+
+
+
+/* =====================================================
+   GENERATE REVIEW
+===================================================== */
+
+function updateReview(){
+
+    const count =
+        selectedOptions.length;
+
+
+    /*
+       Count
+    */
+
+    document.getElementById(
+        "countText"
+    ).innerText =
+        count + " selected";
+
+
+    /*
+       Progress
+    */
+
+    const percentage =
+        Math.min(
+            (count / 5) * 100,
+            100
+        );
+
+
+    document.getElementById(
+        "progressBar"
+    ).style.width =
+        percentage + "%";
+
+
+    /*
+       No selections
+    */
+
+    if(count === 0){
+
+        document.getElementById(
+            "draft"
+        ).value = "";
+
+        document.getElementById(
+            "copyBtn"
+        ).disabled = true;
+
+        document.getElementById(
+            "googleBtn"
+        ).disabled = true;
+
+        return;
+
+    }
+
+
+    /*
+       Build review
+    */
+
+    let sentences =
+        selectedOptions.map(
+            item => item.text
+        );
+
+
+    let review =
+        "Had a pleasant experience at Kashi View Restaurant & Cafe. ";
+
+
+    if(sentences.length === 1){
+
+        review +=
+            sentences[0];
+
+    }
+
+    else{
+
+        review +=
+            sentences.slice(0,-1).join(" ");
+
+        review +=
+            " " +
+            sentences[sentences.length - 1];
+
+    }
+
+
+    /*
+       Final sentence
+    */
+
+    review +=
+        " Overall, it was a nice experience.";
+
+
+    /*
+       Put into textarea
+    */
+
+    document.getElementById(
+        "draft"
+    ).value =
+        review;
+
+
+    /*
+       Enable buttons
+    */
+
+    document.getElementById(
+        "copyBtn"
+    ).disabled = false;
+
+    document.getElementById(
+        "googleBtn"
+    ).disabled = false;
+
+}
+
+
+
+/* =====================================================
+   COPY REVIEW
+===================================================== */
+
+async function copyReview(){
+
+    const draft =
+        document.getElementById(
+            "draft"
+        );
+
+
+    const text =
+        draft.value.trim();
+
+
+    if(!text){
+
+        return;
+
+    }
+
+
+    try{
+
+        await navigator.clipboard.writeText(
+            text
+        );
+
+
+        showStatus(
+            "✓ Review copied to clipboard."
+        );
+
+
+    }catch(error){
+
+        fallbackCopy(
+            text
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   COPY + OPEN GOOGLE
+===================================================== */
+
+async function copyAndOpenGoogle(){
+
+    const draft =
+        document.getElementById(
+            "draft"
+        );
+
+
+    const text =
+        draft.value.trim();
+
+
+    if(!text){
+
+        return;
+
+    }
+
+
+    /*
+       Copy first
+    */
+
+    try{
+
+        await navigator.clipboard.writeText(
+            text
+        );
+
+
+        showStatus(
+            "✓ Review copied. Opening Google Reviews..."
+        );
+
+
+        /*
+           Open Google
+        */
+
+        setTimeout(
+            function(){
+
+                window.location.href =
+                    GOOGLE_REVIEW_URL;
+
+            },
+            500
+        );
+
+
+    }catch(error){
+
+        /*
+           Fallback
+        */
+
+        fallbackCopy(text);
+
+
+        setTimeout(
+            function(){
+
+                window.location.href =
+                    GOOGLE_REVIEW_URL;
+
+            },
+            500
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   FALLBACK COPY
+===================================================== */
+
+function fallbackCopy(text){
+
+    const textarea =
+        document.createElement(
+            "textarea"
+        );
+
+
+    textarea.value =
+        text;
+
+
+    textarea.style.position =
+        "fixed";
+
+    textarea.style.left =
+        "-9999px";
+
+
+    document.body.appendChild(
+        textarea
+    );
+
+
+    textarea.focus();
+
+    textarea.select();
+
+
+    try{
+
+        document.execCommand(
+            "copy"
+        );
+
+
+        showStatus(
+            "✓ Review copied to clipboard."
+        );
+
+    }catch(error){
+
+        showStatus(
+            "Please copy the review manually."
+        );
+
+    }
+
+
+    textarea.remove();
+
+}
+
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+function showStatus(message){
+
+    const status =
+        document.getElementById(
+            "status"
+        );
+
+
+    status.innerText =
+        message;
+
+
+    status.style.display =
+        "block";
+
+
+    setTimeout(
+        function(){
+
+            status.style.display =
+                "none";
+
+        },
+        3000
+    );
+
+}
+
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+document
+    .getElementById("search")
+    .addEventListener(
+        "input",
+        function(){
+
+            const query =
+                this.value
+                    .toLowerCase()
+                    .trim();
+
+
+            document
+                .querySelectorAll(
+                    ".option"
+                )
+                .forEach(
+                    function(option){
+
+                        const title =
+                            option.dataset.title
+                                .toLowerCase();
+
+
+                        const text =
+                            option.dataset.text
+                                .toLowerCase();
+
+
+                        if(
+                            title.includes(query)
+                            ||
+                            text.includes(query)
+                        ){
+
+                            option.style.display =
+                                "flex";
+
+                        }else{
+
+                            option.style.display =
+                                "none";
+
+                        }
+
+                    }
+                );
+
+        }
+    );
+
+
+
+/* =====================================================
+   QR GENERATOR
+===================================================== */
+
+function generateQR(){
+
+    const qrBox =
+        document.getElementById(
+            "qrBox"
+        );
+
+
+    qrBox.style.display =
+        "block";
+
+
+    new QRCode(
+        document.getElementById(
+            "qrcode"
+        ),
+        {
+            text:
+                window.location.href,
+
+            width:230,
+
+            height:230,
+
+            correctLevel:
+                QRCode.CorrectLevel.H
+        }
+    );
+
+}
+
+
+/* =====================================================
+   QR URL
+=====================================================
+
+   To generate QR page:
+
+   https://yourdomain.com/index.html?qr=1
+
+===================================================== */
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+
+if(
+    params.get("qr") === "1"
+){
+
+    generateQR();
+
+}
+
+
+
+/* =====================================================
+   DOWNLOAD QR
+===================================================== */
+
+function downloadQR(){
+
+    const canvas =
+        document.querySelector(
+            "#qrcode canvas"
+        );
+
+
+    if(!canvas){
+
+        return;
+
+    }
+
+
+    const link =
+        document.createElement(
+            "a"
+        );
+
+
+    link.download =
+        "Kashi-View-Restaurant-Google-Review-QR.png";
+
+
+    link.href =
+        canvas.toDataURL(
+            "image/png"
+        );
+
+
+    link.click();
+
+}
+
+</script>
+
+</body>
+</html>
